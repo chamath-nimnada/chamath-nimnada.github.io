@@ -5,9 +5,8 @@ const sendBtn = document.getElementById('send-btn');
 const promptStarters = document.getElementById('prompt-starters');
 const mouseSpotlight = document.querySelector('.mouse-spotlight');
 
-// --- Replace with your actual OpenAI API key ---
-const API_KEY = 'sk-proj--pep5tUDbfEw4-vf2fgSOx7-HDO1cUkuZkc1AHuzXbR4YICE1c60JvlZ_wbJRKPNtSDZT3BlbkFJqfUUXSp8HEedfu_qrPa5a81UQnsX-wnZ6HbagishJg6aaB7w4LsZ0__fLxS-yy65VWTQ2p9KMA'; 
-const API_URL = "https://api.openai.com/v1/chat/completions";
+// --- Use your Cloudflare Worker URL instead of API key ---
+const API_URL = "https://portfolio-chatbot.nimnadachamath25.workers.dev";
 
 // --- System Instruction for the "I am Chamath" Persona ---
 const systemInstruction = {
@@ -61,14 +60,8 @@ async function handleSendMessage() {
     try {
         const response = await fetch(API_URL, {
             method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`
-            },
-            body: JSON.stringify({
-                model: "gpt-4o-mini", // or "gpt-4o", "gpt-3.5-turbo"
-                messages: conversationHistory
-            })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: conversationHistory })
         });
 
         if (!response.ok) { throw new Error(`API Error: ${response.statusText}`); }
