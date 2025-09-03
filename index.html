@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamath | AI Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="mouse-spotlight"></div>
+
+    <div class="portfolio-container">
+        <div class="left-panel">
+            <img src="assets/images/profile.jpg" alt="Chamath" class="profile-pic">
+            <h1>Chamath Nimnada</h1>
+            <p class="position">Full-Stack Engineer</p>
+            <div class="social-links">
+                <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/chamath-nimnada" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:nimnadachamath25@gmail.com" target="_blank" title="Gmail"><i class="fas fa-envelope"></i></a>
+                <a href="[Your Instagram URL]" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="assets/documents/my-cv.pdf" download class="cv-button">
+                Download CV <i class="fas fa-download"></i>
+            </a>
+        </div>
+
+        <div class="right-panel">
+            <div class="chat-window" id="chat-window">
+                </div>
+            <div class="prompt-starters" id="prompt-starters">
+                 <button class="starter-chip">Tell me about your projects</button>
+                 <button class="starter-chip">What's your tech stack?</button>
+                 <button class="starter-chip">What are your hobbies?</button>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask me anything about my profile...">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/my-data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
