@@ -6,7 +6,7 @@ const promptStarters = document.getElementById('prompt-starters');
 const mouseSpotlight = document.querySelector('.mouse-spotlight');
 
 // --- Replace with your actual OpenAI API key ---
-const API_KEY = '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'; 
+const API_KEY = 'sk-proj--pep5tUDbfEw4-vf2fgSOx7-HDO1cUkuZkc1AHuzXbR4YICE1c60JvlZ_wbJRKPNtSDZT3BlbkFJqfUUXSp8HEedfu_qrPa5a81UQnsX-wnZ6HbagishJg6aaB7w4LsZ0__fLxS-yy65VWTQ2p9KMA'; 
 const API_URL = "https://api.openai.com/v1/chat/completions";
 
 // --- System Instruction for the "I am Chamath" Persona ---
