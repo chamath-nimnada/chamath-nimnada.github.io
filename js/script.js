@@ -97,7 +97,7 @@ window.onload = () => {
 };
 
 // -----------------------------------------------------------------
-// --- Advanced Background Animation Logic ---
+// --- Advanced Background Animation Logic (Software Keywords) ---
 // -----------------------------------------------------------------
 
 const canvas = document.getElementById('matrix-canvas');
@@ -106,13 +106,26 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789';
-const charactersArray = characters.split('');
+// --- Software engineering / CLI keywords ---
+const keywords = [
+  "git", "push", "pull", "commit", "merge", "branch",
+  "npm", "install", "run", "build", "start", "test",
+  "yarn", "add", "remove",
+  "docker", "exec", "logs",
+  "kubectl", "apply", "get", "describe", "delete",
+  "ls", "cd", "pwd", "echo", "cat", "touch", "mkdir", "rm", "cp", "mv",
+  "node", "python", "java", "javac", "gcc",
+  "code", "vim", "nano",
+  "ssh", "scp", "curl", "wget",
+  "sudo", "chmod", "chown",
+  "ps", "kill", "top", "htop",
+  "make", "cmake", "gradle", "mvn",
+  "tail", "head", "grep", "awk", "sed"
+];
+
 const fontSize = 16;
 const columns = Math.ceil(canvas.width / fontSize);
-
-const drops = [];
-for (let x = 0; x < columns; x++) { drops[x] = 1; }
+const drops = Array(columns).fill(1);
 
 function drawMatrix() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
@@ -121,8 +134,10 @@ function drawMatrix() {
     ctx.font = `${fontSize}px monospace`;
 
     for (let i = 0; i < drops.length; i++) {
-        const text = charactersArray[Math.floor(Math.random() * charactersArray.length)];
+        // --- Pick a random keyword ---
+        const text = keywords[Math.floor(Math.random() * keywords.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
             drops[i] = 0;
         }
