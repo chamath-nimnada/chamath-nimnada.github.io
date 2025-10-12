@@ -1,24 +1,23 @@
 // js/my-data.js
 
 const portfolioData = {
-    name: "Chamath", // Changed name
+    name: "Chamath Nimnada", // Changed name
     position: "Software Engineering Student",
     // ... rest of your data from before
     summary: "I am a passionate and dedicated software engineering undergraduate with a strong foundation in full-stack web development. I love solving complex problems and building applications that are both functional and user-friendly.",
     education: [
         {
             degree: "BSc (Hons) in Software Engineering",
-            university: "University of Colombo School of Computing, Sri Lanka",
+            university: "National Institute of Business Management, Sri Lanka",
             duration: "2023 - 2027"
         }
     ],
     //... fill in the rest of your details as before
     skills: {
-        programmingLanguages: ["JavaScript", "Python", "Java", "C++"],
-        frontend: ["HTML", "CSS", "React", "Bootstrap"],
-        backend: ["Node.js", "Express.js"],
-        databases: ["MongoDB", "MySQL"],
-        tools: ["Git", "Docker", "VS Code", "Figma"]
+        programmingLanguages: ["Java", "C#", "JavaScript", "Python", "Dart", "HTML", "CSS", "XML"],
+        Frameworks: [ "Spring Boot", "Flutter", "React", ".NET"],
+        databases: ["MongoDB", "MySQL", "PostgreSQL", "Firebase", "SQLite"],
+        tools: ["Git", "Docker", "VS Code", "Figma", "Postman", "Trello"]
     },
     projects: [
         {
@@ -39,5 +38,5 @@ const portfolioData = {
             year: "2024"
         }
     ],
-    hobbies: ["Playing guitar", "Hiking", "Reading sci-fi novels", "Competitive programming"]
+    hobbies: ["Hiking", "Reading sci-fi novels", "Competitive programming"]
 };
