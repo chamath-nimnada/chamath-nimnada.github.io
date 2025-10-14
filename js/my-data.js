@@ -1,9 +1,8 @@
 // js/my-data.js
 
 const portfolioData = {
-    name: "Chamath Nimnada", // Changed name
+    name: "Chamath Nimnada",
     position: "Software Engineering Student",
-    // ... rest of your data from before
     summary: "I am a passionate and dedicated software engineering undergraduate with a strong foundation in full-stack web development. I love solving complex problems and building applications that are both functional and user-friendly.",
     education: [
         {
@@ -12,7 +11,6 @@ const portfolioData = {
             duration: "2023 - 2027"
         }
     ],
-    //... fill in the rest of your details as before
     skills: {
         programmingLanguages: ["Java", "C#", "JavaScript", "Python", "Dart", "HTML", "CSS", "XML"],
         Frameworks: [ "Spring Boot", "Flutter", "React", ".NET"],
@@ -21,15 +19,54 @@ const portfolioData = {
     },
     projects: [
         {
-            name: "E-commerce Website",
-            description: "A full-featured online store built with the MERN stack (MongoDB, Express, React, Node.js). Implemented user authentication, product catalog, shopping cart, and a Stripe payment gateway.",
-            technologies: ["React", "Node.js", "MongoDB", "Stripe API"]
+            name: "Betel Leaf Diseases Checker",
+            description: "A mobile application to help farmers to detect betel leaf diseases. Build using a trained ML model integrated into a mobile app for instant image-based diagnosis.",
+            technologies: ["Google Colab", "Flutter", "Spring Boot", "Java", "Dart"],
+            states: "In Progress",
+            type: "Group Project"
         },
         {
-            name: "Portfolio Chatbot (This Project!)",
-            description: "A unique portfolio where visitors can interact with me (as an AI) based on my professional data. Built using plain HTML, CSS, JavaScript, and the Google Gemini API.",
-            technologies: ["HTML", "CSS", "JavaScript", "Google Gemini API"]
+            name: "BusTrackLK",
+            description: "A Mobile application to help passengers to track bus locations, view schedules and book bus tickets. Also have an option to find lost packages.",
+            technologies: ["Flutter", "Spring Boot", "Java", "Firebase", "React", "MySQL"],
+            states: "In Progress",
+            type: "Group Project"
+        },
+        {
+            name: "Portfolio",
+            description: "A personalized AI-Powered portfolio. Trained the chatbot with my personal data to present my profile, projects, and skills.",
+            technologies: ["HTML", "CSS", "JS", "ChatGPT API", "Cloudflare"],
+            states: "Completed",
+            type: "Individual Project"
+        },
+        {
+            name: "Windows Port Checker",
+            description: "A desktop application for developers to check easily check the windows ports details like its free or not. Also, if it is busy developers can see which process run on that port.",
+            technologies: ["C#", ".NET", "WPF", "XML"],
+            states: "Completed",
+            type: "Individual Project"
+        },
+        {
+            name: "Tuition Manager",
+            description: "A mobile application to help tutors to manage their students, schedules, payments, and etc.",
+            technologies: ["Java", "XML", "Firebase"],
+            states: "Completed",
+            type: "Group Project"
+        },
+        {
+            name: "E-Channeling System",
+            description: "-",
+            technologies: ["Java", "Spring Boot", "HTML", "CSS", "JS", "React", "MySQL"],
+            states: "Completed",
+            type: "Group Project"
+        },
+        {
+            name: "Automated Baby Cart - Baby Caring Robot",
+            description: "a Baby Caring Robot designed to assist parents in managing childcare more efficiently. In today's busy social environment, parents often face challenges in providing continuous care for their babies. The primary goal of this project is to reduce parental stress and improve childcare efficiency.",
+            states: "Completed",
+            type: "Group Project"
         }
+
     ],
     certifications: [
         {
