@@ -10,16 +10,22 @@ const API_URL = "https://portfolio-chatbot.nimnadachamath25.workers.dev";
 
 // --- System Instruction for the "I am Chamath" Persona ---
 const systemInstruction = {
-  role: "system",
-  content: `You ARE ${portfolioData.name}.
+    role: "system",
+    content: `You ARE ${portfolioData.name}.
   You must respond in the first person ("I", "my", "me"). 
   Your persona is confident, professional, and passionate about technology.
   You must only answer questions based on the data provided below.
 
+  **Response Formatting Rules (CRITICAL):**
+  1. Use clear, bulleted points for lists of projects, skills, or features. 
+  2. Each bullet point MUST start on a new line.
+  3. Use **Bold Headings** for different sections (e.g., **Projects**, **Skills**).
+  4. Use double newlines (\n\n) between paragraphs or sections to prevent large blocks of text.
+  5. NEVER use markdown headers like "###". Use **Bold Text** instead.
+
   **Response Style Rules:**
-  1.  By default, keep your answers concise and to the point. Use bullet points for lists (like skills or projects) for easy reading.
-  2.  If the user asks for more details, a description, or an explanation (e.g., "Tell me more about..."), then you should provide a longer, more descriptive answer.
-  3.  If a question cannot be answered with the provided data, or if it's off-topic, politely say that your focus is on your professional background. For example: "I'd be happy to discuss my skills and projects. Is there a specific area you're interested in?"
+  1. Keep answers concise. If the user asks "Tell me about your projects", list them clearly with brief descriptions.
+  2. If a question cannot be answered with the provided data, politely say your focus is on your professional background.
 
   **Your Data:**
   ---
@@ -27,20 +33,18 @@ const systemInstruction = {
   ---`
 };
 
-// --- Conversation history array ---
 let conversationHistory = [systemInstruction];
 
-// --- Function to add a message to the chat window ---
 function addMessage(sender, text) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('chat-message', `${sender}-message`);
+    // Simple bolding logic
     text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     messageElement.innerHTML = text;
     chatWindow.appendChild(messageElement);
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-// --- Function to handle sending a message ---
 async function handleSendMessage() {
     const userMessage = chatInput.value.trim();
     if (userMessage === '') return;
@@ -66,17 +70,16 @@ async function handleSendMessage() {
 
         if (!response.ok) { throw new Error(`API Error: ${response.statusText}`); }
         const data = await response.json();
-        
-        chatWindow.removeChild(typingIndicator);
 
+        chatWindow.removeChild(typingIndicator);
         const botResponse = data.choices[0].message.content;
-        
+
         conversationHistory.push({ role: "assistant", content: botResponse });
         addMessage('bot', botResponse);
 
     } catch (error) {
         console.error("Error fetching from API:", error);
-        chatWindow.removeChild(typingIndicator);
+        if (typingIndicator.parentNode) chatWindow.removeChild(typingIndicator);
         addMessage('bot', 'Sorry, I seem to be having trouble connecting. Please try again later.');
     }
 }
@@ -91,38 +94,21 @@ promptStarters.addEventListener('click', (event) => {
     }
 });
 
-// --- Initial welcome message ---
 window.onload = () => {
+    const loader = document.getElementById('loader-wrapper');
+    if (loader) {
+        setTimeout(() => { loader.classList.add('loader-hidden'); }, 2500);
+    }
     addMessage('bot', `Hello! I'm ${portfolioData.name}. Welcome to my interactive portfolio. You can ask me anything about my work.`);
 };
 
-// -----------------------------------------------------------------
-// --- Advanced Background Animation Logic (Software Keywords) ---
-// -----------------------------------------------------------------
-
+// --- Matrix Animation Logic ---
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// --- Software engineering / CLI keywords ---
-const keywords = [
-  "git", "push", "pull", "commit", "merge", "branch",
-  "npm", "install", "run", "build", "start", "test",
-  "yarn", "add", "remove",
-  "docker", "exec", "logs",
-  "kubectl", "apply", "get", "describe", "delete",
-  "ls", "cd", "pwd", "echo", "cat", "touch", "mkdir", "rm", "cp", "mv",
-  "node", "python", "java", "javac", "gcc",
-  "code", "vim", "nano",
-  "ssh", "scp", "curl", "wget",
-  "sudo", "chmod", "chown",
-  "ps", "kill", "top", "htop",
-  "make", "cmake", "gradle", "mvn",
-  "tail", "head", "grep", "awk", "sed"
-];
-
+const keywords = ["git", "push", "pull", "npm", "docker", "python", "java", "node", "flutter"];
 const fontSize = 16;
 const columns = Math.ceil(canvas.width / fontSize);
 const drops = Array(columns).fill(1);
@@ -132,30 +118,20 @@ function drawMatrix() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'rgba(0, 255, 65, 0.7)';
     ctx.font = `${fontSize}px monospace`;
-
     for (let i = 0; i < drops.length; i++) {
-        // --- Pick a random keyword ---
         const text = keywords[Math.floor(Math.random() * keywords.length)];
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-        }
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) { drops[i] = 0; }
         drops[i]++;
     }
 }
-
 setInterval(drawMatrix, 50);
 
-// --- Mouse Spotlight Logic ---
 window.addEventListener('mousemove', (e) => {
     mouseSpotlight.style.background = `radial-gradient(circle 400px at ${e.clientX}px ${e.clientY}px, transparent, rgba(0,0,0,0.95))`;
 });
 
-// --- Handle window resize ---
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    const newColumns = Math.ceil(canvas.width / fontSize);
-    for (let x = 0; x < newColumns; x++) { drops[x] = 1; }
 });
